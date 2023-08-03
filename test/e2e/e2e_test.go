@@ -29,7 +29,8 @@ var _ = BeforeSuite(func() {
 
 var _ = AfterSuite(func() {
 	// Terminate the subprocess when tests are done
-	cmd.Process.Kill()
+	err := cmd.Process.Kill()
+	Expect(err).NotTo(HaveOccurred())
 })
 
 var _ = Describe("API Endpoints", func() {
