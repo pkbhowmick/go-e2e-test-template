@@ -3,7 +3,7 @@ module github.com/pkbhowmick/go-e2e-test-template
 go 1.20
 
 require (
-	github.com/gorilla/mux v1.8.0
+	github.com/go-chi/chi/v5 v5.0.10
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.27.10
 )

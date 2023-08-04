@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/go-chi/chi/v5"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -12,9 +12,12 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	r := mux.NewRouter()
-	r.HandleFunc("/hello", helloHandler)
+	r := chi.NewRouter()
+	r.Get("/hello", helloHandler)
 
-	http.Handle("/", r)
-	http.ListenAndServe(":8080", nil)
+	srv := &http.Server{
+		Addr:    "8080",
+		Handler: r,
+	}
+	srv.ListenAndServe()
 }
